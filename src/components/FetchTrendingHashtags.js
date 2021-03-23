@@ -6,11 +6,6 @@ state={
     trend: [],
 };
 async componentDidMount(){
-    // const api_key = "XwOosefoG21azEyt8NVxToesj"
-    // const api_secret = "AjKoYBNgsvhIogATyM4wmPFRi4doQoAxxbPpfzDd5uNurZbFwK"
-    // const access_token = "2483583809-OXbIAiOwhpwDAmekRcJIiwvCNsKmxsssd0eG4Qa"
-    // const access_token_secret = "K8PnlwukS6Rb0wkvpyPSaVQTH3ECz6Izd9eTRX4a05uju"
-    // const bearer_token = "AAAAAAAAAAAAAAAAAAAAAFI%2BNwEAAAAAAp9G5I6AMuZvgFQiBHUlLFFsWmE%3DjvM6fx3pheFMET1I0yZ54VhuoWlETnq7CIIoIXhKd2JPm942rA"
     
     const BASE_URL = "https://api.twitter.com/1.1/trends/place.json?id="
     const locationID = "23424975"
