@@ -13,8 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/trends", async (req, res) => {
   try {
-    //    var id = req.query['id'];
-    const data = await getTweets("4118");
+    console.log("inside api call");
+    var id = req.query["id"];
+    console.error(id);
+    const data = await getTweets(id);
     const rawTrendData = data[0];
     res.send(rawTrendData.trends);
   } catch (e) {
