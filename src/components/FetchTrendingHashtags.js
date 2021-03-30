@@ -1,5 +1,6 @@
 import React from "react";
 const axios = require("axios");
+
 export default class FetchTrendingHashtags extends React.Component {
   state = {
     loading: true,
@@ -12,7 +13,7 @@ export default class FetchTrendingHashtags extends React.Component {
     axios
       .get(BASE_URL, {
         params: {
-          id: "23424775",
+          id: "23424748",
         },
       })
       .then(
