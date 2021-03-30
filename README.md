@@ -10,10 +10,11 @@ Features completed:
 2. Create a local node js backend
 3. Connect node js backend with twitter api and fetch relevant data
 4. Create and expose the node API with Express framework that will serve as local endpoint for frontend to grab incoming data
+5. Consume node's api in React Component
+6. Render the incoming data
+7. Output data on App.js
 
 Coming soon:
-1. Consume node's api in React Component
-2. Render the incoming data
-3. Output data on App.js 
-4. Make it beautiful!
-5. Work on deploying the app with Dockerfile
+
+1. Make it beautiful!
+2. Work on deploying the app with Dockerfile
