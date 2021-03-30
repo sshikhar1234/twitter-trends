@@ -1,20 +1,19 @@
 pipeline{
-    agent master
-    {
+    agent any    {
         stages{
-            stage("Checkout"){
-                println("Checking out project from git")
+            stage('Checkout'){
+                echo 'Checking out project from git'
                 var scm = checkout scm
             }
-            stage("Build"){
-                println("Build running")
+            stage('Build'){
+                echo 'Build running'
             }
-            stage("Build"){
-                println("Tests running")
+            stage('Test'){
+                echo 'Tests running'
             }
-            stage("Deploy"){
-                println("Deploying web app on cloud")
-                println("Deployment Successful")
+            stage('Deploy'){
+                echo 'Deploying web app on cloud'
+                echo 'Deployment Successful'
             }
         }
     }
