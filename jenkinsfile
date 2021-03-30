@@ -4,7 +4,7 @@ pipeline{
             stage('Checkout'){
                 steps{
                 echo 'Checking out project from git'
-                def scm = checkout scm
+                checkout scm
                 }
             }
             stage('Build'){
