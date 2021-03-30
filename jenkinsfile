@@ -1,20 +1,28 @@
 pipeline{
-    agent any    {
+    agent any
         stages{
             stage('Checkout'){
+                steps{
                 echo 'Checking out project from git'
                 var scm = checkout scm
+                }
             }
             stage('Build'){
+                steps{
                 echo 'Build running'
+                }
             }
             stage('Test'){
+                steps{
                 echo 'Tests running'
+                }
             }
             stage('Deploy'){
+                steps{
                 echo 'Deploying web app on cloud'
                 echo 'Deployment Successful'
+                }
             }
         }
-    }
+    
 }
