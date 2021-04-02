@@ -1,9 +1,12 @@
 const client = require("./twit");
 const express = require("express");
 const bodyParser = require("body-parser");
+const { request } = require("http");
+const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || 5000;
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -33,6 +36,7 @@ app.get("/", async (req, res) => {
     console.error(e);
   }
 });
+
 // Start the server on port 5000
 function getTweets(id) {
   return new Promise((resolve, reject) => {
