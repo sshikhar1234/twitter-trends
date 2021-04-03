@@ -4,8 +4,11 @@ pipeline{
     stages{
             stage('Checkout'){
                 steps{
+                //Checking out main project
                 echo 'Checking out project from git'
                 checkout scm
+                //Checking out secret key from a private git repo
+                //In child directory
                 dir('key'){
                 echo 'Checking out api keys from git'
                 echo "${WORKSPACE}"
@@ -13,26 +16,20 @@ pipeline{
                 credentialsId: 'SHIKHARDEVOPSID',
                 url: 'https://github.com/sshikhar1234/twitter-api-keys.git'
                 }
+                //This command copies the secret .env file to root work directory
                 sh "cp ${WORKSPACE}/key/.env ${WORKSPACE}"
-
-                // fileOperations([fileCopyOperation(
-                // excludes: '',
-                // flattenFiles: false,
-                // includes: 'key\\*.js',
-                // targetLocation: "${WORKSPACE}"
-                // )])
                 }
             }
             stage('Build'){
                 steps{
                 echo 'Build running'
                 sh 'npm install'
-                sh 'npm start'
                 }
             }
             stage('Test'){
                 steps{
                 echo 'Tests running'
+                sh '/jenkins/scripts/test.sh'
                 }
             }
             stage('Deploy'){
