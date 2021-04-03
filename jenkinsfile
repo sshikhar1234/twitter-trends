@@ -14,14 +14,17 @@ pipeline{
                 echo 'Checking out project from git'
                 checkout scm
                 echo 'Checking out api keys from git'
-                checkout([
-                     $class: 'GitSCM',
-                     branches: [[name: 'main']],
-                     doGenerateSubmoduleConfigurations: false,
-                     xtensions: [[]],
-                     submoduleCfg: [],
-                     userRemoteConfigs: [[credentialsId: 'SHIKHARDEVOPSID',url: 'https://github.com/sshikhar1234/twitter-api-keys.git']]
-                ])
+                // checkout([
+                //      $class: 'GitSCM',
+                //      branches: [[name: 'main']],
+                //      doGenerateSubmoduleConfigurations: false,
+                //      xtensions: [[]],
+                //      submoduleCfg: [],
+                //      userRemoteConfigs: [[credentialsId: 'SHIKHARDEVOPSID',url: 'https://github.com/sshikhar1234/twitter-api-keys.git']]
+                // ])
+                git branch: 'main',
+                credentialsId: 'SHIKHARDEVOPSID',
+                url: 'https://github.com/sshikhar1234/twitter-api-keys.git'
                 // sh 'npm install'
                 }
             }
