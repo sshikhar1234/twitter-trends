@@ -6,13 +6,18 @@ pipeline{
                 steps{
                 echo 'Checking out project from git'
                 checkout scm
+                env.TWITTER_CONSUMER_KEY = credentials('TWITTER_CONSUMER_KEY')
+                env.TWITTER_ACCESS_TOKEN_KEY = credentials('TWITTER_ACCESS_TOKEN_KEY')
+                env.TWITTER_ACCESS_TOKEN_SECRET = credentials('TWITTER_ACCESS_TOKEN_SECRET')
+                env.TWITTER_BEARER_TOKEN = credentials('TWITTER_BEARER_TOKEN')
                 }
             }
             stage('Build'){
                 steps{
                 echo 'Build running'
-                sh 'npm install'
-                sh 'npm start'
+                echo "${env.TWITTER_CONSUMER_KEY}"
+                // sh 'npm install'
+                // sh 'npm start'
                 }
             }
             stage('Test'){
