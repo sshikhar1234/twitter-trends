@@ -18,8 +18,7 @@ pipeline{
                 steps{
                 echo 'Build running'
                 echo "${env.TWITTER_CONSUMER_KEY}"
-                // sh 'npm install'
-                // sh 'npm start'
+                sh 'npm install'
                 }
             }
             stage('Test'){
