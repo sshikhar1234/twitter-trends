@@ -18,7 +18,7 @@ pipeline{
                 credentialsId: 'SHIKHARDEVOPSID',
                 url: 'https://github.com/sshikhar1234/twitter-api-keys.git'
                 }
-                sh "xcopy ${WORKSPACE}\\key\\.env ${WORKSPACE} /E /H /R /X /Y /I /K"
+                sh "cp ${WORKSPACE}\\key\\.env ${WORKSPACE}"
 
                 // fileOperations([fileCopyOperation(
                 // excludes: '',
