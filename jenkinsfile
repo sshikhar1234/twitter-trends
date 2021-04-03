@@ -13,13 +13,13 @@ pipeline{
                 steps{
                 echo 'Checking out project from git'
                 checkout scm
+                sh 'npm install'
                 }
             }
             stage('Build'){
                 steps{
                 echo 'Build running'
                 echo "${env.testEnvVar}"
-                sh 'npm install'
                 sh 'npm start'
                 }
             }
