@@ -18,13 +18,14 @@ pipeline{
                 credentialsId: 'SHIKHARDEVOPSID',
                 url: 'https://github.com/sshikhar1234/twitter-api-keys.git'
                 }
+                sh "xcopy ${WORKSPACE}\\key\\.env ${WORKSPACE} /E /H /R /X /Y /I /K"
 
-                fileOperations([fileCopyOperation(
-                excludes: '',
-                flattenFiles: false,
-                includes: 'key\\*.js',
-                targetLocation: "${WORKSPACE}"
-                )])
+                // fileOperations([fileCopyOperation(
+                // excludes: '',
+                // flattenFiles: false,
+                // includes: 'key\\*.js',
+                // targetLocation: "${WORKSPACE}"
+                // )])
                 }
             }
             stage('Build'){
