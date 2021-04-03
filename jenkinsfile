@@ -24,7 +24,7 @@ pipeline{
                 excludes: '',
                 flattenFiles: false,
                 includes: 'api-dir\\.env',
-                targetLocation: "."
+                targetLocation: "${WORKSPACE}"
                 )])
                 sh 'npm install'
                 }
