@@ -13,14 +13,7 @@ pipeline{
                 checkout scm
                 dir('key'){
                 echo 'Checking out api keys from git'
-                // checkout([
-                //      $class: 'GitSCM',
-                //      branches: [[name: 'main']],
-                //      doGenerateSubmoduleConfigurations: false,
-                //      xtensions: [[]],
-                //      submoduleCfg: [],
-                //      userRemoteConfigs: [[credentialsId: 'SHIKHARDEVOPSID',url: 'https://github.com/sshikhar1234/twitter-api-keys.git']]
-                // ])
+                echo "${WORKSPACE}"
                 git branch: 'main',
                 credentialsId: 'SHIKHARDEVOPSID',
                 url: 'https://github.com/sshikhar1234/twitter-api-keys.git'
