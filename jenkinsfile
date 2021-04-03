@@ -13,7 +13,16 @@ pipeline{
                 steps{
                 echo 'Checking out project from git'
                 checkout scm
-                sh 'npm install'
+                echo 'Checking out api keys from git'
+                checkout([
+                     $class: 'GitSCM',
+                     branches: [[name: 'main']],
+                     doGenerateSubmoduleConfigurations: false,
+                     xtensions: [[]],
+                     submoduleCfg: [],
+                     userRemoteConfigs: [[credentialsId: 'SHIKHARDEVOPSID',url: 'https://github.com/sshikhar1234/twitter-api-keys.git']]
+                ])
+                // sh 'npm install'
                 }
             }
             stage('Build'){
