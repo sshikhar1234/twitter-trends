@@ -2,6 +2,11 @@ pipeline{
     agent any
     tools {nodejs "node"}
     stages{
+        stage('Clean Workspace'){
+            steps{
+                cleanWs()
+            }
+        }
             stage('Checkout'){
                 steps{
                 echo 'Checking out project from git'
@@ -23,7 +28,7 @@ pipeline{
                 fileOperations([fileCopyOperation(
                 excludes: '',
                 flattenFiles: false,
-                includes: 'key\\*',
+                includes: 'key\\*.js',
                 targetLocation: "${env.WORKSPACE}"
                 )])
                 }
