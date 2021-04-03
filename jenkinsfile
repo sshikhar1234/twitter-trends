@@ -6,7 +6,7 @@ pipeline{
                 steps{
                 echo 'Checking out project from git'
                 checkout scm
-                dir('api-dir'){
+                dir('key'){
                 echo 'Checking out api keys from git'
                 // checkout([
                 //      $class: 'GitSCM',
@@ -23,10 +23,9 @@ pipeline{
                 fileOperations([fileCopyOperation(
                 excludes: '',
                 flattenFiles: false,
-                includes: 'api-dir\\.env',
-                targetLocation: "${WORKSPACE}"
+                includes: 'key\\*',
+                targetLocation: "${env.WORKSPACE}"
                 )])
-                sh 'npm install'
                 }
             }
             stage('Build'){
