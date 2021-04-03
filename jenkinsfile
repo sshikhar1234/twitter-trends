@@ -18,7 +18,7 @@ pipeline{
                 git branch: 'main',
                 credentialsId: 'SHIKHARDEVOPSID',
                 url: 'https://github.com/sshikhar1234/twitter-api-keys.git'
-                // sh 'npm install'
+                sh 'npm install'
                 }
             }
             stage('Build'){
