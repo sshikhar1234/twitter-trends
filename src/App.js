@@ -1,7 +1,6 @@
 import "./App.css";
 import FetchTrendingHashtags from "./components/FetchTrendingHashtags";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import { BrowserRouter as Router } from "react-router-dom";
 function App() {
   return (
     <div className="App">
