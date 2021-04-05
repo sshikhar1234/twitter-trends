@@ -9,10 +9,6 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//CANADA = 23424775
-//INDIA = 23424848
-//INDIA = 4118
-
 app.get("/trends", async (req, res) => {
   try {
     console.log("inside api call");
