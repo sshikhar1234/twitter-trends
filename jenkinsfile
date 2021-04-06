@@ -3,7 +3,6 @@ pipeline{
     tools {nodejs "node"}
     //Sample commit text
     //Sample commit text two
-    //Sample commit text three
     
     stages{
             stage('Checkout'){
