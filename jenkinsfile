@@ -39,7 +39,7 @@ pipeline{
                 steps{
                     echo 'Deploying web app on cloud'
                     //This step creates the tar file of the project that can be readily dropped on the cloud or any other platform for hosting! :)
-                    sh "tar czf nanogram-${BUILD_NUMBER}.tar.gz node_modules public server src .env package.json"
+                    sh "tar czf nanogram-${BRANCH_NAME}-${BUILD_NUMBER}.tar.gz node_modules public server src .env package.json"
                     echo 'Deployment Successful'
                 }
             }

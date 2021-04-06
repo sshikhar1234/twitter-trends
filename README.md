@@ -21,8 +21,9 @@ Features completed:
 7. Output data on App.js
 8. Add dropdown list and dynamic selection support
 9. Setup Dockarized jenkins pipeline that checks out the project and builds project into deployable tar file payload.
+10. Setup Github webhooks to trigger Jenkins Build automatically on Git Push event.
 
 Coming soon:
 
-1. Make it beautiful!
-2. Work on deploying the app with Dockerfile
+11. Make it beautiful!
+12. Work on deploying the app with Dockerfile
