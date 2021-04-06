@@ -1,6 +1,7 @@
 pipeline{
     agent any
     tools {nodejs "node"}
+    //Sample commit text
     stages{
             stage('Checkout'){
                 steps{
@@ -43,5 +44,4 @@ pipeline{
                 }
             }
         }
-    
 }
