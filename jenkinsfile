@@ -2,7 +2,6 @@ pipeline{
     agent any
     tools {nodejs "node"}
     //Sample commit text
-    //Sample commit text two
     
     stages{
             stage('Checkout'){
