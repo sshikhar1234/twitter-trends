@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('Test Docker'){
             steps{
-            sh 'docker version'
+            sh 'sudo docker version'
             }
         }
             // stage('Checkout'){
