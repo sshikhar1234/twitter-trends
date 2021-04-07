@@ -1,47 +1,54 @@
 pipeline{
-    agent any
-    tools {nodejs "node"}
+    agent {
+        docker {
+        image 'docker:15.13.0-alpine3.10'
+        }
+    }
+    // tools {nodejs "node"}
     
     stages{
-            stage('Checkout'){
-                steps{
-                //Checking out main project
-                echo 'Checking out project from git'
-                checkout scm
+        stage('Test Docker'){
+            sh 'docker version'
+        }
+            // stage('Checkout'){
+            //     steps{
+            //     //Checking out main project
+            //     echo 'Checking out project from git'
+            //     checkout scm
 
-                //Checking out secret key from a private git repo
-                //In child directory
-                dir('key'){
-                    echo 'Checking out api keys from git'
-                    echo "${WORKSPACE}"
-                    git branch: 'main',
-                    credentialsId: 'SHIKHARDEVOPSID',
-                    url: 'https://github.com/sshikhar1234/twitter-api-keys.git'
-                }
+            //     //Checking out secret key from a private git repo
+            //     //In child directory
+            //     dir('key'){
+            //         echo 'Checking out api keys from git'
+            //         echo "${WORKSPACE}"
+            //         git branch: 'main',
+            //         credentialsId: 'SHIKHARDEVOPSID',
+            //         url: 'https://github.com/sshikhar1234/twitter-api-keys.git'
+            //     }
 
-                //This command copies the secret .env file to root work directory
-                sh "cp ${WORKSPACE}/key/.env ${WORKSPACE}"
-                }
-            }
-            stage('Build'){
-                steps{
-                    echo 'Build running'
-                    sh 'npm install'
-                }
-            }
-            stage('Test'){
-                steps{
-                    echo 'Tests running'
-                    echo 'Tests Successful'
-                }
-            }
-            stage('Package and deploy'){
-                steps{
-                    echo 'Deploying web app on cloud'
-                    //This step creates the tar file of the project that can be readily dropped on the cloud or any other platform for hosting! :)
-                    sh "tar czf nanogram-${BRANCH_NAME}-${BUILD_NUMBER}.tar.gz node_modules public server src .env package.json"
-                    echo 'Deployment Successful'
-                }
-            }
+            //     //This command copies the secret .env file to root work directory
+            //     sh "cp ${WORKSPACE}/key/.env ${WORKSPACE}"
+            //     }
+            // }
+            // stage('Build'){
+            //     steps{
+            //         echo 'Build running'
+            //         sh 'npm install'
+            //     }
+            // }
+            // stage('Test'){
+            //     steps{
+            //         echo 'Tests running'
+            //         echo 'Tests Successful'
+            //     }
+            // }
+            // stage('Package and deploy'){
+            //     steps{
+            //         echo 'Deploying web app on cloud'
+            //         //This step creates the tar file of the project that can be readily dropped on the cloud or any other platform for hosting! :)
+            //         sh "tar czf nanogram-${BRANCH_NAME}-${BUILD_NUMBER}.tar.gz node_modules public server src .env package.json"
+            //         echo 'Deployment Successful'
+            //     }
+            // }
         }
 }
