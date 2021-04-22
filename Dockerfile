@@ -5,7 +5,7 @@ FROM node
 # Using RUN you can run any linux commands
 # Note: These commands will run inside the container not on the host machine
 # One dockerfile can have multiple RUN commands
-RUN mkdire -p /home/app
+RUN mkdir -p /home/app
 
 # This is the only command that runs on the host machine
 # This basically tells docker to copy all the project files from current dir to the dir inside the container
