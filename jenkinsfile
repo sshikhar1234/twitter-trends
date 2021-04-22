@@ -43,7 +43,7 @@ pipeline{
                 // sh "tar czf nanogram-${BRANCH_NAME}-${BUILD_NUMBER}.tar.gz node_modules public server src .env package.json"
                 
                 //This step creates the image file of the project using docker commands that can be readily dropped on the cloud or any other platform for hosting! :)
-                sh "docker build -t nanogram_${BUILD_NUMBER}_${BRANCH_NAME}:1.0 ."
+                sh "docker build -t twitter-trends:1.0 ."
                 echo 'Building docker image'
             }
         }
