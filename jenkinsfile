@@ -1,7 +1,9 @@
 pipeline{
     agent any  
     tools {nodejs "node"}
-    
+    environment{
+        registry = "705223260703.dkr.ecr.us-east-2.amazonaws.com/twitter-trends"
+    }
     stages{
         
         stage('Checkout'){
@@ -41,10 +43,17 @@ pipeline{
                 echo 'Deploying web app on cloud'
                 //This step creates the tar file of the project that can be readily dropped on the cloud or any other platform for hosting! :)
                 // sh "tar czf nanogram-${BRANCH_NAME}-${BUILD_NUMBER}.tar.gz node_modules public server src .env package.json"
+                //Authenticate with AWS ECR
+                echo "Authenticating with AWS ECR"
+                sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 705223260703.dkr.ecr.us-east-2.amazonaws.com"
                 
                 //This step creates the image file of the project using docker commands that can be readily dropped on the cloud or any other platform for hosting! :)
-                sh "docker build -t twitter_trends_${BUILD_NUMBER}_${BRANCH_NAME}:1.0 ."
                 echo 'Building docker image'
+                sh "docker build -t twitter_trends:1.0 ."
+                echo 'Pushing docker image on AWS ECR'
+                sh "docker push 705223260703.dkr.ecr.us-east-2.amazonaws.com/twitter-trends:latest"
+
+                // Push the image to Amazon ECR
             }
         }
     }
